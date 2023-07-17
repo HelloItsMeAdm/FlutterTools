@@ -31,7 +31,7 @@ def getPlatformVar(command, functions=[]):
 # check for new version
 print(f'{Fore.YELLOW}[!] Checking for new version...{Fore.RESET}')
 # get current version
-version = "v0.1.0"
+version = "v1.0.0"
 versionFormatted = ""
 # get latest version
 def checkVersion():
