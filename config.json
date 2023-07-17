@@ -1,0 +1,58 @@
+{
+    "baseIp": "",
+    "emulatorPath": "",
+    "platformToolsPath": "",
+    "phones": [],
+    "platforms": [{
+        "getdevices": {
+            "win": "cd %platformToolsPath% && c: && adb devices",
+            "linux": "cd '%platformToolsPath%' && ./adb devices",
+            "mac": "cd '%platformToolsPath%' && ./adb devices"
+        },
+        "clear": {
+            "win": "cls",
+            "linux": "clear",
+            "mac": "clear"
+        },
+        "getavds": {
+            "win": "cd %emulatorPath% && c: && emulator -list-avds",
+            "linux": "cd %emulatorPath% && ./emulator -list-avds",
+            "mac": "cd %emulatorPath% && ./emulator -list-avds"
+        },
+        "platformToolsPathExample": {
+            "win": "C:\\Users\\UserName\\AppData\\Local\\Android\\sdk\\platform-tools",
+            "linux": "/home/UserName/Android/Sdk/platform-tools",
+            "mac": "/Users/UserName/Library/Android/sdk/platform-tools"
+        },
+        "emulatorPathExample": {
+            "win": "C:\\Users\\UserName\\AppData\\Local\\Android\\sdk\\emulator",
+            "linux": "/home/UserName/Android/Sdk/emulator",
+            "mac": "/Users/UserName/Library/Android/sdk/emulator"
+        },
+        "openAdb": {
+            "win": "start cmd /k \"cd %platformToolsPath% && c:\"",
+            "linux": "gnome-terminal --working-directory='%platformToolsPath%'",
+            "mac": "open -a Terminal '%platformToolsPath%'"
+        },
+        "openEmulator": {
+            "win": "start cmd /k \"cd %emulatorPath% && c:\"",
+            "linux": "gnome-terminal --working-directory='%emulatorPath%'",
+            "mac": "open -a Terminal '%emulatorPath%'"
+        },
+        "startEmulator": {
+            "win": "start cmd /k \"cd %emulatorPath% && c: && emulator -avd $1$ && exit\"",
+            "linux": "gnome-terminal --working-directory='%emulatorPath%' -e \"./emulator -avd $1$ && exit\"",
+            "mac": "open -a Terminal '%emulatorPath%' -e \"./emulator -avd $1$ && exit\""
+        },
+        "connectPhone": {
+            "win": "cd %platformToolsPath% && c: && adb.exe connect $1$ && exit",
+            "linux": "cd '%platformToolsPath%' && ./adb connect $1$ && exit",
+            "mac": "cd '%platformToolsPath%' && ./adb connect $1$ && exit"
+        },
+        "disconnectPhone": {
+            "win": "cd %platformToolsPath% && c: && adb.exe disconnect $1$ && exit",
+            "linux": "cd '%platformToolsPath%' && ./adb disconnect $1$ && exit",
+            "mac": "cd '%platformToolsPath%' && ./adb disconnect $1$ && exit"
+        }
+    }]
+}
