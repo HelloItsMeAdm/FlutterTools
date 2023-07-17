@@ -13,7 +13,7 @@ Python tools to make Flutter development easier!
 - **Quickly open emulator terminal** - Quickly open a terminal with emulator to run commands.
 - **Nice UI** - A nice UI to make the experience better.
 - **Auto-update** - The script will automatically check for updates and update itself.
-- **Cross-platform** - Works on Windows, Linux and macOS.
+- **Cross-platform** - Works on Windows, Linux and macOS. (At least it should, I only tested it on Windows)
 - And more to come!
 
 ## Installation
@@ -55,6 +55,8 @@ cd FlutterTools
 # Download the latest version
 git clone https://github.com/HelloItsMeAdm/FlutterTools.git
 ```
+
+**IMPORTANT: From backup only put back `baseIp` `emulatorPath` `platformToolsPath`, NOTHING ELSE! Config might change in the future, so make sure to check the config file before putting it back.**
 
 ## Usage
 

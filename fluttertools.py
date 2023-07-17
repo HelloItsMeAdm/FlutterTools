@@ -27,11 +27,10 @@ def getPlatformVar(command, functions=[]):
         cmd = cmd.replace(f"${func}$", functions[int(func) - 1])
     return cmd.replace('!', ' ')
 
-
 # check for new version
 print(f'{Fore.YELLOW}[!] Checking for new version...{Fore.RESET}')
 # get current version
-version = "v1.0.0"
+version = "v1.0.1"
 versionFormatted = ""
 # get latest version
 def checkVersion():
@@ -84,12 +83,8 @@ def refreshDevices():
     global connectedDevicesTemp
     connectedDevicesTemp = list(filter(None, os.popen(
         getPlatformVar("getdevices")).read().split('\n')))
-    # remove 'List of devices attached'
-    connectedDevicesTemp.pop(0)
-    # remove all emulators
-    for i in range(len(connectedDevicesTemp)):
-        if 'emulator' in connectedDevicesTemp[i]:
-            connectedDevicesTemp.pop(i)
+    # remove 'List of devices attached' and all devices not connected to base ip
+    connectedDevicesTemp = list(filter(lambda x: 'List of devices attached' not in x and data["baseIp"] in x, connectedDevicesTemp))
 
 
 def welcome(showPhones=True, showEmulators=True, showMenu=True, phoneId=0):
@@ -272,6 +267,8 @@ else:
             if data['baseIp'] == '' or re.match(r'^(?:[0-9]{1,3}\.){2}[0-9]{1,3}$', data['baseIp']) == None or data['platformToolsPath'] == '' or os.path.isdir(data['platformToolsPath'].replace('!', ' ')) == False or data['emulatorPath'] == '' or os.path.isdir(data['emulatorPath'].replace('!', ' ')) == False:
                 badConfig(2)
             else:
+                # set title
+                os.system(getPlatformVar("setTitle", [f"FlutterTools {version}"]))
                 print(f'{Fore.YELLOW}[!] Checking ADB status...{Fore.RESET}')
                 connectedDevicesTemp = []
                 connectedDevicesTemp = list(filter(None, os.popen(

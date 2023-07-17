@@ -53,6 +53,11 @@
             "win": "cd %platformToolsPath% && c: && adb.exe disconnect $1$ && exit",
             "linux": "cd '%platformToolsPath%' && ./adb disconnect $1$ && exit",
             "mac": "cd '%platformToolsPath%' && ./adb disconnect $1$ && exit"
+        },
+        "setTitle": {
+            "win": "title $1$",
+            "linux": "echo -ne \"\\033]0;$1$\\007\"",
+            "mac": "echo -ne \"\\033]0;$1$\\007\""
         }
     }]
 }
